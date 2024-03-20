@@ -1,4 +1,4 @@
-import typed_headers/utils
+import gleam/string
 import typed_headers/content_type/application
 import typed_headers/content_type/audio
 import typed_headers/content_type/font
@@ -34,15 +34,19 @@ fn mime(media_type: String, sub_type: String) {
   media_type <> "/" <> sub_type
 }
 
+fn codecs_to_string(codecs: List(String)) -> String {
+  "; codecs=\"" <> string.join(codecs, ", ") <> "\""
+}
+
 pub fn to_string(content_type: ContentType) -> String {
   case content_type {
     Application(st) -> mime(application.type_name, application.to_string(st))
     ApplicationWithCodecs(st, cd) ->
       mime(application.type_name, application.to_string(st))
-      <> utils.codecs_to_string(cd)
+      <> codecs_to_string(cd)
     Audio(st) -> mime(audio.type_name, audio.to_string(st))
     AudioWithCodecs(st, cd) ->
-      mime(audio.type_name, audio.to_string(st)) <> utils.codecs_to_string(cd)
+      mime(audio.type_name, audio.to_string(st)) <> codecs_to_string(cd)
     Font(st) -> mime(font.type_name, font.to_string(st))
     Example(st) -> mime(example.type_name, example.to_string(st))
     Image(st) -> mime(image.type_name, image.to_string(st))
@@ -52,7 +56,7 @@ pub fn to_string(content_type: ContentType) -> String {
     Text(st) -> mime(text.type_name, text.to_string(st))
     Video(st) -> mime(video.type_name, video.to_string(st))
     VideoWithCodecs(st, cd) ->
-      mime(video.type_name, video.to_string(st)) <> utils.codecs_to_string(cd)
+      mime(video.type_name, video.to_string(st)) <> codecs_to_string(cd)
     Custom(mt, st) -> mime(mt, st)
     Raw(s) -> s
   }
