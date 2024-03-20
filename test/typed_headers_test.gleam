@@ -1,12 +1,27 @@
 import gleeunit
 import gleeunit/should
+import gleam/list
+import typed_headers
+import content_type
 
 pub fn main() {
   gleeunit.main()
 }
 
-// gleeunit test functions end in `_test`
-pub fn hello_world_test() {
-  1
-  |> should.equal(1)
+pub fn single_header_test() {
+  typed_headers.ContentTypeHeader(content_type.ApplicationContentType(
+    content_type.JSONApplicationContentType,
+  ))
+  |> typed_headers.to_string()
+  |> should.equal("Content-Type: application/json")
+}
+
+pub fn multiple_header_test() {
+  [
+    typed_headers.ContentTypeHeader(content_type.ApplicationContentType(
+      content_type.JSONApplicationContentType,
+    )),
+  ]
+  |> list.map(typed_headers.to_string)
+  |> should.equal(["Content-Type: application/json"])
 }

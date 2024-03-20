@@ -11,8 +11,6 @@ pub type Method {
   CustomMethod(String)
 }
 
-pub const header_name = "Method"
-
 pub fn to_string(method: Method) -> String {
   case method {
     GETMethod -> "GET"

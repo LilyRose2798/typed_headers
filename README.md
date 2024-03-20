@@ -7,10 +7,20 @@
 gleam add typed_headers
 ```
 ```gleam
+import gleam/list
 import typed_headers
+import typed_headers/content_type
 
 pub fn main() {
-  // TODO: An example of the project in use
+  let headers =
+  [
+    typed_headers.ContentTypeHeader(
+      content_type.ApplicationContentType(
+        content_type.JSONApplicationContentType,
+      )
+    )
+  ]
+  |> list.map(typed_headers.to_string)
 }
 ```
 
