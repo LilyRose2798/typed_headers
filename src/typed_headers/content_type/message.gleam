@@ -6,8 +6,8 @@ pub type Message {
 
 pub const type_name = "message"
 
-pub fn to_string(ct: Message) -> String {
-  case ct {
+pub fn to_string(message: Message) -> String {
+  case message {
     HTTP -> "http"
     SIP -> "sip"
     Custom(s) -> s

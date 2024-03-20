@@ -6,8 +6,8 @@ pub type Model {
 
 pub const type_name = "model"
 
-pub fn to_string(ct: Model) -> String {
-  case ct {
+pub fn to_string(model: Model) -> String {
+  case model {
     STEP -> "step"
     OBJ -> "obj"
     Custom(s) -> s

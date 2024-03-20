@@ -4,8 +4,8 @@ pub type Example {
 
 pub const type_name = "example"
 
-pub fn to_string(ct: Example) -> String {
-  case ct {
+pub fn to_string(example: Example) -> String {
+  case example {
     Custom(s) -> s
   }
 }

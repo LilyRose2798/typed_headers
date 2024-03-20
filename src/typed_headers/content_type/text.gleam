@@ -8,8 +8,8 @@ pub type Text {
 
 pub const type_name = "text"
 
-pub fn to_string(ct: Text) -> String {
-  case ct {
+pub fn to_string(text: Text) -> String {
+  case text {
     Plain -> "plain"
     HTML -> "html"
     Javascript -> "javascript"

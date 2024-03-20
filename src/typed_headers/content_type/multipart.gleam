@@ -6,8 +6,8 @@ pub type Multipart {
 
 pub const type_name = "multipart"
 
-pub fn to_string(ct: Multipart) -> String {
-  case ct {
+pub fn to_string(multipart: Multipart) -> String {
+  case multipart {
     FormData -> "form-data"
     Mixed -> "mixed"
     Custom(s) -> s

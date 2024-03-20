@@ -25,8 +25,8 @@ pub type Audio {
 
 pub const type_name = "audio"
 
-pub fn to_string(ct: Audio) -> String {
-  case ct {
+pub fn to_string(audio: Audio) -> String {
+  case audio {
     AAC -> "aac"
     FLAC -> "flac"
     MPEG -> "mpeg"

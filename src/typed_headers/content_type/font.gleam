@@ -10,8 +10,8 @@ pub type Font {
 
 pub const type_name = "font"
 
-pub fn to_string(ct: Font) -> String {
-  case ct {
+pub fn to_string(font: Font) -> String {
+  case font {
     Collection -> "collection"
     OTF -> "otf"
     SFNT -> "sfnt"
